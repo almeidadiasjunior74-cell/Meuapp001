@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CortaLive – clipes virais das suas lives</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#14102b;--bg2:#1d1840;--line:#33295f;--tx:#f4f1ff;--mut:#a9a1d1;--ac:#ff4d7e;--hl:#ffd23f;--ok:#3dd9eb;--on:#14102b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f2ff;--bg2:#fff;--line:#d9d2f5;--tx:#1a1440;--mut:#5f5890;--ac:#e0245a;--hl:#f5b800;--ok:#0a8ea0;--on:#fff}}
+:root[data-theme="light"]{--bg:#f5f2ff;--bg2:#fff;--line:#d9d2f5;--tx:#1a1440;--mut:#5f5890;--ac:#e0245a;--hl:#f5b800;--ok:#0a8ea0;--on:#fff}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "DM Sans",system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-weight:800;font-size:22px}.logo i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--ac);margin-right:8px;animation:rec 1.4s infinite}
+@keyframes rec{50%{opacity:.25}}
+nav a{color:var(--mut);text-decoration:none;margin-left:20px;font-size:15px}nav a:hover{color:var(--tx)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:12px;padding:14px 22px;font:700 16px "DM Sans",sans-serif;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}.btn:focus-visible,.chip:focus-visible,input:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:30px 0 60px}
+h1{font-size:clamp(38px,6vw,68px);font-weight:800;letter-spacing:-.02em}
+.lead{color:var(--mut);font-size:18px;max-width:46ch;margin:18px 0 26px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+input[type=text]{flex:1;min-width:220px;background:var(--bg2);border:1.5px solid var(--line);border-radius:12px;color:var(--tx);padding:14px 16px;font:16px "DM Sans",sans-serif}
+.hint{color:var(--mut);font-size:14px;margin-top:10px}
+.phone{width:100%;max-width:290px;aspect-ratio:9/16;margin:0 auto;border-radius:28px;border:6px solid var(--line);background:linear-gradient(160deg,#5b3cc4,#ff4d7e 70%,#ffb347);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.scene{position:absolute;inset:0;display:grid;place-items:center;transition:transform .6s}
+.scene.zoom{animation:zoom 3s ease-in-out infinite}.scene.shake{animation:shake .4s infinite}
+@keyframes zoom{50%{transform:scale(1.18)}}@keyframes shake{25%{transform:translate(3px,-2px)}75%{transform:translate(-3px,2px)}}
+.face{width:46%;aspect-ratio:1;border-radius:50%;background:#ffd9b8;position:relative;box-shadow:0 0 0 14px rgba(255,255,255,.18)}
+.face:before,.face:after{content:"";position:absolute;top:38%;width:9%;height:9%;border-radius:50%;background:#2a1a40}.face:before{left:28%}.face:after{right:28%}
+.badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;font:700 12px "DM Sans";padding:4px 9px;border-radius:8px}
+.score{position:absolute;top:12px;right:12px;background:var(--ok);color:var(--on);font:800 13px "DM Sans";padding:4px 9px;border-radius:8px}
+.cap{position:absolute;left:8%;right:8%;bottom:14%;text-align:center;font:800 24px/1.2 "Bricolage Grotesque",sans-serif;color:#fff;text-shadow:0 2px 0 #000,0 0 8px rgba(0,0,0,.6)}
+.cap span{display:inline-block;margin:0 3px;transition:transform .15s}.cap span.on{color:var(--hl);transform:scale(1.18)}
+.cap.neon{font-family:"DM Sans";text-shadow:0 0 6px var(--ok),0 0 16px var(--ok)}.cap.neon span.on{color:#fff}
+.cap.min{font:700 16px "DM Sans";background:rgba(0,0,0,.6);padding:8px 10px;border-radius:8px;text-shadow:none}
+.bar{position:absolute;left:0;bottom:0;height:5px;background:var(--hl);width:0}
+section{padding:50px 0}h2{font-size:clamp(28px,4vw,40px);margin-bottom:22px}
+.steps{display:none}.steps.show{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.step{padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);color:var(--mut);font-size:14px}
+.step.done{border-color:var(--ok);color:var(--ok)}.step.run{border-color:var(--hl);color:var(--hl)}
+#studio{display:none;grid-template-columns:1fr 1fr;gap:30px}#studio.show{display:grid}
+.clips{display:grid;gap:10px;align-content:start}
+.clip{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;text-align:left;background:var(--bg2);border:1.5px solid var(--line);border-radius:14px;padding:12px;color:var(--tx);cursor:pointer;font:inherit}
+.clip[aria-pressed=true]{border-color:var(--ac)}
+.sc{width:54px;height:54px;border-radius:12px;background:var(--ok);color:var(--on);display:grid;place-items:center;font:800 20px "Bricolage Grotesque"}
+.clip b{display:block}.clip small{color:var(--mut)}
+.panel{background:var(--bg2);border:1.5px solid var(--line);border-radius:18px;padding:20px}
+.panel h3{font-size:20px;margin-bottom:14px}
+.lab{display:block;color:var(--mut);font-size:14px;margin:16px 0 8px}
+.chip{background:transparent;border:1.5px solid var(--line);color:var(--tx);border-radius:99px;padding:7px 14px;margin:0 6px 6px 0;cursor:pointer;font:500 14px "DM Sans"}
+.chip[aria-pressed=true]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+input[type=range]{width:100%;accent-color:var(--ac)}
+select{background:var(--bg);color:var(--tx);border:1.5px solid var(--line);border-radius:10px;padding:10px;font:inherit;width:100%}
+.exp{margin-top:20px;width:100%}.prog{height:8px;background:var(--line);border-radius:9px;margin-top:12px;overflow:hidden;display:none}.prog i{display:block;height:100%;width:0;background:var(--ok)}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.how p{color:var(--mut);margin:8px 0 0}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{border:1.5px solid var(--line);border-radius:18px;padding:22px;background:var(--bg2)}.plan.top{border-color:var(--ac)}
+.plan .pr{font:800 34px "Bricolage Grotesque";margin:8px 0}.plan ul{padding-left:18px;color:var(--mut);margin:0}
+footer{color:var(--mut);padding:30px 0 50px;font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:800px){.hero,#studio,.how,.plans{grid-template-columns:1fr}nav a:not(:last-child){display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo"><i></i>CortaLive</div><nav><a href="#como">Como funciona</a><a href="#planos">Planos</a><a href="#studio">Entrar</a></nav></header>
+
+<div class="hero">
+ <div>
+  <h1>Sua live de 6 horas vira 10 clipes prontos para viralizar.</h1>
+  <p class="lead">Cole o link da transmissão. A gente encontra os melhores momentos, escreve as legendas e anima tudo em formato vertical.</p>
+  <div class="row"><input type="text" id="url" value="https://www.youtube.com/live/exemplo" aria-label="Link da live"><button class="btn" id="go">Encontrar clipes</button></div>
+  <p class="hint">YouTube, Twitch, Kick e Facebook. Ou envie o arquivo de vídeo. Esta página é um protótipo: a análise é simulada.</p>
+ </div>
+ <div class="phone" aria-label="Prévia do clipe">
+  <div class="scene" id="scene"><div class="face"></div></div>
+  <div class="badge" id="tm">00:00 → 00:38</div><div class="score" id="scv">96</div>
+  <div class="cap" id="cap"></div><div class="bar" id="bar"></div>
+ </div>
+</div>
+
+<section id="resultado" style="padding-top:0">
+ <div class="steps" id="steps"><span class="step">Baixando a live</span><span class="step">Transcrevendo a fala</span><span class="step">Medindo picos de emoção</span><span class="step">Escolhendo os melhores trechos</span></div>
+ <div id="studio">
+  <div><h2>Clipes encontrados</h2><div class="clips" id="clips"></div></div>
+  <div class="panel">
+   <h3 id="ctitle">Clipe</h3>
+   <span class="lab">Estilo da legenda</span>
+   <div id="g-style"><button class="chip" data-v="" aria-pressed="true">Karaokê</button><button class="chip" data-v="neon" aria-pressed="false">Neon</button><button class="chip" data-v="min" aria-pressed="false">Minimal</button></div>
+   <span class="lab">Animação</span>
+   <div id="g-anim"><button class="chip" data-v="zoom" aria-pressed="true">Zoom no rosto</button><button class="chip" data-v="shake" aria-pressed="false">Tremor</button><button class="chip" data-v="" aria-pressed="false">Nenhuma</button></div>
+   <span class="lab">Início: <b id="sv">0</b>s</span><input type="range" id="s" min="0" max="60" value="0" aria-label="Início">
+   <span class="lab">Fim: <b id="ev">38</b>s</span><input type="range" id="e" min="5" max="90" value="38" aria-label="Fim">
+   <span class="lab">Qualidade</span>
+   <select id="q"><option>1080p · 60 fps</option><option>1080p · 30 fps</option><option>4K · 30 fps</option><option>720p · 30 fps</option></select>
+   <button class="btn exp" id="exp">Exportar clipe</button>
+   <div class="prog" id="prog"><i></i></div><p class="hint" id="msg"></p>
+  </div>
+ </div>
+</section>
+
+<section id="como"><h2>Da live ao Reels em três passos</h2>
+ <div class="how">
+  <div><h3>Cole o link</h3><p>Aceita lives de várias horas, ao vivo ou já encerradas.</p></div>
+  <div><h3>Escolha os clipes</h3><p>Cada trecho recebe uma nota de 0 a 100 pelo potencial de viralizar.</p></div>
+  <div><h3>Exporte e publique</h3><p>Legendas, animações e formato 9:16 já aplicados, em até 4K.</p></div>
+ </div></section>
+
+<section id="planos"><h2>Planos</h2>
+ <div class="plans">
+  <div class="plan"><h3>Grátis</h3><div class="pr">R$ 0</div><ul><li>60 min de live por mês</li><li>720p com marca d’água</li></ul></div>
+  <div class="plan top"><h3>Criador</h3><div class="pr">R$ 49/mês</div><ul><li>20 h de live por mês</li><li>1080p sem marca d’água</li><li>Pagamento por Pix</li></ul></div>
+  <div class="plan"><h3>Equipe</h3><div class="pr">R$ 149/mês</div><ul><li>100 h de live por mês</li><li>4K e 60 fps</li><li>Vários usuários</li></ul></div>
+ </div></section>
+<footer>CortaLive · protótipo visual. Análise, legendas e exportação reais exigem um servidor com FFmpeg e transcrição de voz.</footer>
+</div>
+
+<script>
+var CLIPS=[
+ {t:"A reação ao gol no último minuto",s:1262,d:38,sc:96,w:"NÃO ACREDITO QUE ELE FEZ ISSO GENTE"},
+ {t:"Susto com o jumpscare do jogo",s:7410,d:24,sc:93,w:"AAAH QUE ISSO MEU DEUS DO CÉU"},
+ {t:"Resposta engraçada para o chat",s:10955,d:31,sc:89,w:"O CHAT PEDIU E EU VOU MOSTRAR AGORA"},
+ {t:"Virada épica na partida final",s:15870,d:45,sc:86,w:"ISSO AQUI É HISTÓRIA PURA PESSOAL"},
+ {t:"Doação surpresa e agradecimento",s:19300,d:28,sc:82,w:"GENTE OBRIGADO DE CORAÇÃO MESMO"}
+];
+var cur=0,words=[],wi=0,timer;
+var $=function(i){return document.getElementById(i)};
+function fmt(n){var h=Math.floor(n/3600),m=Math.floor(n%3600/60),s=n%60;return (h?h+":":"")+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")}
+function setWords(txt){words=txt.split(" ");$("cap").innerHTML=words.map(function(w){return "<span>"+w+"</span>"}).join(" ");wi=0;clearInterval(timer);
+ timer=setInterval(function(){var sp=$("cap").children;for(var i=0;i<sp.length;i++)sp[i].classList.toggle("on",i===wi);wi=(wi+1)%sp.length;$("bar").style.width=(wi/sp.length*100)+"%"},420)}
+function pick(i){cur=i;var c=CLIPS[i];$("ctitle").textContent=c.t;$("scv").textContent=c.sc;
+ $("s").value=0;$("e").value=c.d;$("sv").textContent=0;$("ev").textContent=c.d;$("tm").textContent=fmt(c.s)+" → "+fmt(c.s+c.d);setWords(c.w);
+ [].forEach.call(document.querySelectorAll(".clip"),function(b,j){b.setAttribute("aria-pressed",j===i)})}
+function rng(){var s=+$("s").value,e=+$("e").value;if(e<=s+4){e=s+5;$("e").value=e}$("sv").textContent=s;$("ev").textContent=e;$("tm").textContent=fmt(CLIPS[cur].s+s)+" → "+fmt(CLIPS[cur].s+e)}
+$("s").oninput=rng;$("e").oninput=rng;
+function group(id,fn){[].forEach.call($(id).children,function(b){b.onclick=function(){[].forEach.call($(id).children,function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");fn(b.dataset.v)}})}
+group("g-style",function(v){$("cap").className="cap "+v});
+group("g-anim",function(v){$("scene").className="scene "+v});
+$("scene").className="scene zoom";setWords(CLIPS[0].w);
+$("clips").innerHTML=CLIPS.map(function(c,i){return '<button class="clip" aria-pressed="false" onclick="pick('+i+')"><div class="sc">'+c.sc+'</div><div><b>'+c.t+'</b><small>'+fmt(c.s)+' · '+c.d+' s</small></div></button>'}).join("");
+$("go").onclick=function(){
+ var st=$("steps");st.classList.add("show");$("studio").classList.remove("show");
+ var ch=st.children,k=0;[].forEach.call(ch,function(x){x.className="step"});
+ var iv=setInterval(function(){if(k>0)ch[k-1].className="step done";if(k<ch.length){ch[k].className="step run";k++}else{clearInterval(iv);$("studio").classList.add("show");pick(0);$("resultado").scrollIntoView({behavior:"smooth"})}},800)};
+$("exp").onclick=function(){var p=$("prog"),b=p.firstElementChild,n=0;p.style.display="block";$("msg").textContent="Renderizando em "+$("q").value+"…";
+ var iv=setInterval(function(){n+=4;b.style.width=n+"%";if(n>=100){clearInterval(iv);$("msg").textContent="Clipe pronto. Em um site real, o download começaria agora."}},90)};
+</script>
+</body>
+</html>
